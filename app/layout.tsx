@@ -1,9 +1,18 @@
 import type { Metadata } from "next";
+import { Inter, DM_Serif_Display } from "next/font/google";
 import "./globals.css";
+import BackgroundBlobs from "./components/BackgroundBlobs";
+
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const dmSerif = DM_Serif_Display({
+    weight: "400",
+    subsets: ["latin"],
+    variable: "--font-dm-serif"
+});
 
 export const metadata: Metadata = {
-    title: "My Portfolio",
-    description: "Portfolio website",
+    title: "Visual Art Portfolio",
+    description: "A premium portfolio for visual arts",
 };
 
 export default function RootLayout({
@@ -13,7 +22,10 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body>{children}</body>
+            <body className={`${inter.variable} ${dmSerif.variable} font-sans`}>
+                <BackgroundBlobs />
+                {children}
+            </body>
         </html>
     );
 }
